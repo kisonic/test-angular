@@ -20,7 +20,7 @@ angular.module('weather', [])
 				self.isEdit = false;
 				self.template = 'days-list.html';
 
-				$http.get('/assets/data/towns.json').success(function (data) {
+				$http.get('assets/data/towns.json').success(function (data) {
 					self.list = data;
 					updateDays();
 				});
