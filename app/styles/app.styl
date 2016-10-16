@@ -4,5 +4,12 @@ import('helpers/svg-size')
 @import 'helpers/mixins'
 @import 'helpers/fonts'
 @import 'helpers/optimize'
+@import 'bootstrap'
 
 import('../blocks/**/*')
+
+.btn-group
+	margin-bottom 20px
+
+input.ng-invalid.ng-dirty:not(:focus):not(.ng-empty)
+	border-color $brand-danger

@@ -1,0 +1,9 @@
+.row
+	.col-xs-4(ng-repeat='day in towns.days | orderBy:"date"')
+		.thumbnail
+			.caption
+				h3.text-center {{day.date | date:'dd.MM.yyyy'}}
+				p.text-center {{day.temperature}} °C | {{day.precipitation}} мм
+				p.text-center
+					button.btn.btn-primary(ng-click='towns.editDay(day.date)'): span.glyphicon.glyphicon-pencil
+					button.btn.btn-danger(ng-click='towns.deleteDay(day.date)'): span.glyphicon.glyphicon-remove

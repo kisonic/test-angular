@@ -1,0 +1,16 @@
+.panel.panel-default
+	table.table
+		thead
+			tr
+				th: b Дата
+				th.text-center: b Температура
+				th.text-center: b Осадки
+				th
+		tbody
+			tr(ng-repeat='day in towns.days | orderBy:"date"')
+				td {{day.date | date:'dd.MM.yyyy'}}
+				td.text-center {{day.temperature}} °C
+				td.text-center {{day.precipitation}} мм
+				td.text-right
+					button.btn.btn-primary(ng-click='towns.editDay(day.date)'): span.glyphicon.glyphicon-pencil
+					button.btn.btn-danger(ng-click='towns.deleteDay(day.date)'): span.glyphicon.glyphicon-remove

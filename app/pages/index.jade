@@ -1,6 +1,83 @@
 extends /blocks/layout-default/layout-default
 
 block head
-	- var pageTitle = 'CSSSR Project Template';
+	- var pageTitle = 'Angular Test Project';
 
 block content
+	.container(ng-app='weather')
+		.row(towns)
+			.col-xs-8
+				menu.btn-group
+					button.btn.btn-default(
+						ng-repeat='town in towns.list'
+						ng-class='{ active: towns.isSelected($index) }'
+						ng-click='towns.selectTown($index)'
+					) {{town.name}}
+
+			.col-xs-4.text-right
+				.btn-group
+					button.btn.btn-default(
+						ng-click='towns.template = "days-list.html"'
+						ng-class='{ active: towns.template === "days-list.html" }'
+					)
+						span.glyphicon.glyphicon-th-list
+					button.btn.btn-default(
+						ng-click='towns.template = "days-table.html"'
+						ng-class='{ active: towns.template === "days-table.html" }'
+					)
+						span.glyphicon.glyphicon-th
+
+			.col-xs-12
+				div(ng-include='towns.template')
+
+				form.panel.panel-default(
+					name='addDayForm'
+					ng-submit='addDayForm.$valid && towns.addDay()'
+					novalidate
+				)
+					table.table
+						tr
+							td
+								input.form-control(
+									type='text'
+									name='date'
+									placeholder='__.__.____'
+									ng-model='towns.newDay.date'
+									validate-date
+									required
+								)
+							td
+								.input-group
+									input.form-control(
+										type='number'
+										name='temperature'
+										ng-model='towns.newDay.temperature'
+										min=-273
+										required
+									)
+									span.input-group-addon °C
+							td
+								.input-group
+									input.form-control(
+										type='number'
+										name='precipitation'
+										ng-model='towns.newDay.precipitation'
+										min=0
+										required
+									)
+									span.input-group-addon мм
+							td
+								button.btn.btn-success(
+									type='submite'
+									value='Add'
+									ng-hide='towns.isEdit'
+									ng-class='{ disabled: !addDayForm.$valid }'
+								)
+									span.glyphicon.glyphicon-plus
+								button.btn.btn-success(
+									type='submite'
+									value='Add'
+									ng-show='towns.isEdit'
+									ng-class='{ disabled: !addDayForm.$valid }'
+								)
+									span.glyphicon.glyphicon-refresh

@@ -1,0 +1,52 @@
+[
+	{
+		"name": "Москва",
+		"weather": [
+			{
+				"date": 1474750800000,
+				"temperature": 22,
+				"precipitation": 1
+			},
+			{
+				"date": 1474837200000,
+				"temperature": 10,
+				"precipitation": 7
+			},
+			{
+				"date": 1474923600000,
+				"temperature": 12,
+				"precipitation": 5
+			},
+			{
+				"date": 1475010000000,
+				"temperature": 9,
+				"precipitation": 3
+			},
+			{
+				"date": 1475269200000,
+				"temperature": 9,
+				"precipitation": 3
+			}
+		]
+	},
+	{
+		"name": "Пенза",
+		"weather": [
+			{
+				"date": 1474750800000,
+				"temperature": 11,
+				"precipitation": 1
+			}
+		]
+	},
+	{
+		"name": "Самара",
+		"weather": [
+			{
+				"date": 1474923600000,
+				"temperature": 12,
+				"precipitation": 5
+			}
+		]
+	}
+]
