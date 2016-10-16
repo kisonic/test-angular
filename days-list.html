@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+	<table class="table">
+		<thead>
+			<tr>
+				<th>
+					<b>Дата</b>
+				</th>
+				<th class="text-center">
+					<b>Температура</b>
+				</th>
+				<th class="text-center">
+					<b>Осадки</b>
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="day in towns.days | orderBy:&quot;date&quot;">
+				<td>{{day.date | date:'dd.MM.yyyy'}}</td>
+				<td class="text-center">{{day.temperature}} °C</td>
+				<td class="text-center">{{day.precipitation}} мм</td>
+				<td class="text-right">
+					<button ng-click="towns.editDay(day.date)" class="btn btn-primary">
+						<span class="glyphicon glyphicon-pencil"></span>
+					</button>
+					<button ng-click="towns.deleteDay(day.date)" class="btn btn-danger">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="imagetoolbar" content="no">
+		<meta name="msthemecompatible" content="no">
+		<meta name="cleartype" content="on">
+		<meta name="HandheldFriendly" content="True">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="format-detection" content="address=no">
+		<meta name="google" value="notranslate">
+		<meta name="theme-color" content="#ffffff">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta name="application-name" content="">
+		<meta name="msapplication-tooltip" content="">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-tap-highlight" content="no">
+		<title>Angular Test Project</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<link href="/assets/styles/app.min.css?v=5d852f8" rel="stylesheet">
+	</head>
+
+	<body class="page">
+		<div ng-app="weather" class="container">
+			<div towns class="row">
+				<div class="col-xs-8">
+					<menu class="btn-group">
+						<button ng-repeat="town in towns.list" ng-class="{ active: towns.isSelected($index) }" ng-click="towns.selectTown($index)"
+							class="btn btn-default">{{town.name}}</button>
+					</menu>
+				</div>
+				<div class="col-xs-4 text-right">
+					<div class="btn-group">
+						<button ng-click="towns.template = &quot;days-list.html&quot;" ng-class="{ active: towns.template === &quot;days-list.html&quot; }"
+							class="btn btn-default">
+							<span class="glyphicon glyphicon-th-list"></span>
+						</button>
+						<button ng-click="towns.template = &quot;days-table.html&quot;" ng-class="{ active: towns.template === &quot;days-table.html&quot; }"
+							class="btn btn-default">
+							<span class="glyphicon glyphicon-th"></span>
+						</button>
+					</div>
+				</div>
+				<div class="col-xs-12">
+					<div ng-include="towns.template"></div>
+					<form name="addDayForm" ng-submit="addDayForm.$valid &amp;&amp; towns.addDay()" novalidate class="panel panel-default">
+						<table class="table">
+							<tr>
+								<td>
+									<input type="text" name="date" placeholder="__.__.____" ng-model="towns.newDay.date" validate-date required class="form-control">
+								</td>
+								<td>
+									<div class="input-group">
+										<input type="number" name="temperature" ng-model="towns.newDay.temperature" min="-273" required class="form-control">
+										<span class="input-group-addon">°C</span>
+									</div>
+								</td>
+								<td>
+									<div class="input-group">
+										<input type="number" name="precipitation" ng-model="towns.newDay.precipitation" min="0" required class="form-control">
+										<span class="input-group-addon">мм</span>
+									</div>
+								</td>
+								<td>
+									<button type="submite" value="Add" ng-hide="towns.isEdit" ng-class="{ disabled: !addDayForm.$valid }" class="btn btn-success">
+										<span class="glyphicon glyphicon-plus"></span>
+									</button>
+									<button type="submite" value="Add" ng-show="towns.isEdit" ng-class="{ disabled: !addDayForm.$valid }" class="btn btn-success">
+										<span class="glyphicon glyphicon-refresh"></span>
+									</button>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</div>
+			</div>
+		</div>
+		<script src="/assets/scripts/app.min.js?v=af721bc"></script>
+	</body>
+
+</html>
